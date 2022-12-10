@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+    <title>Library Management</title>
+<style>
+*{
+  box-sizing: border-box;
+}
+body {
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-family: Arial;
+}
+#page11{    display: block ; } #page12{    display: block ; } #page13{    display: block ; }
+#page14{    display: block ; } #page15{    display: block ; } #page16{    display: block ; }
+#page17{    display: block ; } #page18{    display: block ; } #page19{    display: block ; }
+#page21{    display: none ; } #page22{    display: none ; } #page23{    display: none ; }
+#page24{    display: none ; } #page25{    display: none ; } #page26{    display: none ; }
+#page27{    display: none ; } #page28{    display: none ; } #page29{    display: none ; }
+#page31{    display: none ; } #page32{    display: none ; } #page33{    display: none ; }
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+.row {
+  margin: 10px -16px;
+}
+.row,
+.row > .column {
+  padding: 8px;
+}
+.column {
+  float: left;
+  width: 33.33%; 
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.content {
+  background-color: white;
+  padding: 10px;
+}
+.show {
+  display: block;
+}
+.center {
+text-align: center;
+}
+.pagination a{
+color: black;
+padding: 10px 15px;
+text-decoration: none;
+}
+.pagination a.active{
+background-color: rgb(195, 195, 195);
+color: white;
+}
+.pagination a:hover:not(.active) {
+background-color: lightgray;
+}
+h1{
+    font-family: "Optima";
+}
+</style>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+<h1>Library Management</h1>
+<hr>
+<div class="filter">
+    <h4>Title</h4>
+      <div class="Title">
+        <input id="filter" type="text" placeholder="Enter Text..">
+      </div>
+</div>
+    <h4>Author</h4>
+    <div class="Author">
+        <label><input type="checkbox" rel="Rajaraman" onchange="change();"/>Rajaraman</label>  
+        <label><input type="checkbox" rel="Ghosh" onchange="change();"/>Ghosh</label> 
+        <label><input type="checkbox" rel="Yegnanarayana" onchange="change();"/>Yegnanarayana</label>
+        <label><input type="checkbox" rel="Krishnamurthy" onchange="change();"/>Krishnamurthy</label>
+        <label><input type="checkbox" rel="Gupta" onchange="change();"/>Gupta</label> 
+        <label><input type="checkbox" rel="Robert" onchange="change();"/>Robert</label>
+        <label><input type="checkbox" rel="Ashok" onchange="change();"/>Ashok</label>
+        <label><input type="checkbox" rel="Duggal" onchange="change();"/>Duggal</label>
+        <label><input type="checkbox" rel="Michael" onchange="change();"/>Michael</label>
+    </div>
+    <div class="column">
+    <h4>Subject</h4>
+      <div class="Subject">
+        <label><input type="checkbox" rel="CSE" onchange="change();"/>CSE</label>
+        <label><input type="checkbox" rel="MECH" onchange="change();"/>MECH</label>
+        <label><input type="checkbox" rel="CIVIL" onchange="change();"/>CIVIL</label>
+      </div>
+    </div>
+    <h4>Publish Year</h4>
+    <div class="PublishYear">
+        <label><input type="checkbox" rel="1990" onchange="change();"/>1990</label>
+        <label><input type="checkbox" rel="2000" onchange="change();"/>2000</label>
+        <label><input type="checkbox" rel="2010" onchange="change();"/>2010</label>
+        <label><input type="checkbox" rel="2020" onchange="change();"/>2020</label>
+    </div>
+    <h4>Sorted Books Count:</h4>
+    <label id="result1"></label>
+
+    <div id="res">
+    <div class="row">
+    <div class="result">
+        <div id="page11" class="content column CSE Rajaraman 1990">
+              <h4>Analog computation and simulation</h4>
+              <p>Author: Rajaraman</p>
+              <p>Subject: CSE</p>
+              <p>Publish Year: 1990 </p>
+        </div>
+        <div id="page12" class="content column CSE Rajaraman 2000">
+              <h4>Computer programming in COBOL</h4>
+              <p>Author: Rajaraman </p>
+              <p>Subject: CSE</p>
+              <p>Publish Year: 2000</p>
+        </div>
+        <div id="page13" class="content column CSE Ghosh 2010">
+              <h4>Foundations of parallel processing</h4>
+              <p>Author: Ghosh</p>
+              <p>Subject: CSE</p>
+              <p>Publish Year: 2010</p>
+        </div>
+        <div id="page14" class="content column CSE Rajaraman 2000">
+              <h4>Information Systems</h4>
+              <p>Author: Rajaraman</p>
+              <p>Subject: CSE</p>
+              <p>Publish Year: 2000</p>
+        </div>
+        <div id="page15" class="content column CSE Ghosh 1990">
+                <h4>Natural language processing</h4>
+                <p>Author: Ghosh</p>
+                <p>Subject: CSE</p>
+                <p>Publish Year: 1990</p>
+        </div>
+        <div id="page16" class="content column CSE Rajaraman 2020">
+                <h4>Information Systems</h4>
+                <p>Author: Rajaraman</p>
+                <p>Subject: CSE</p>
+                <p>Publish Year: 2020</p>
+        </div>
+        <div id="page17" class="content column CSE Yegnanarayana 2020">
+                <h4>Artificial neural networks</h4>
+                <p>Author: Yegnanarayana</p>
+                <p>Subject: CSE</p>
+                <p>Publish Year: 2020</p>
+        </div>
+        <div id="page18" class="content column CSE Krishnamurthy 2010">
+                <h4>Programming in MATLAB</h4>
+                <p>Author: Krishnamurthy</p>
+                <p>Subject: CSE</p>
+                <p>Publish Year: 2010</p>
+          </div>
+        <div id="page19" class="content column CSE Krishnamurthy 1990">
+                <h4>Theory of computer science</h4>
+                <p>Author: Krishnamurthy</p>
+                <p>Subject: CSE</p>
+                <p>Publish Year: 1990</p>
+            </div>
+
+
+
+
+        <div id="page21" class="content column MECH Gupta 2010">
+                <h4>A Textbook of Machine Design</h4>
+                <p>Author: Gupta</p>
+                <p>Subject: MECH </p>
+                <p>Publish Year: 2010 </p>
+          </div>
+          <div id="page22" class="content column MECH Robert 2000">
+                <h4>An Introduction to MechanicsL</h4>
+                <p>Author: Robert </p>
+                <p>Subject: MECH</p>
+                <p>Publish Year: 2000</p>
+          </div></tr>
+          <div id="page23" class="content column MECH Gupta 2010">
+                <h4>Design of Machine Elements</h4>
+                <p>Author: Gupta</p>
+                <p>Subject: MECH</p>
+                <p>Publish Year: 2010</p>
+          </div>
+          <div id="page24" class="content column MECH Rajaraman 2000">
+                <h4>A Textbook of MATLAB Design</h4>
+                <p>Author: Rajaraman</p>
+                <p>Subject:MECH</p>
+                <p>Publish Year: 2000</p>
+          </div>
+          <div id="page25" class="content column MECH Robert 1990">
+                  <h4>Basic & Applied Thermodynamics</h4>
+                  <p>Author: Robert</p>
+                  <p>Subject: MECH</p>
+                  <p>Publish Year: 1990</p>
+          </div>
+          <div id="page26" class="content column MECH Gupta 2020">
+                  <h4>Engineering Mechanics</h4>
+                  <p>Author: Gupta</p>
+                  <p>Subject: MECH</p>
+                  <p>Publish Year: 2020</p>
+          </div>
+
+
+        
+         <div id="page27" class="content column CIVIL Ashok 1990">
+                <h4>Surveying</h4>
+                <p>Author: Ashok</p>
+                <p>Subject: CIVIL</p>
+                <p>Publish Year: 1990 </p>
+          </div>
+          <div id="page28" class="content column CIVIL Duggal 2000">
+                <h4>Design of Steel Structures</h4>
+                <p>Author: Duggal </p>
+                <p>Subject: CIVIL</p>
+                <p>Publish Year: 2000</p>
+          </div></tr>
+          <div id="page29" class="content column CIVIL Ashok 2010">
+                <h4>Structural Dynamics</h4>
+                <p>Author: Ashok</p>
+                <p>Subject: CIVIL</p>
+                <p>Publish Year: 2010</p>
+          </div>
+          <div id="page31" class="content column CIVIL Duggal 2000">
+                <h4>Reinforced Concrete Design</h4>
+                <p>Author: Duggal</p>
+                <p>Subject: CIVIL</p>
+                <p>Publish Year: 2000</p>
+          </div>
+          <div id="page32" class="content column CIVIL Michael 1990">
+                  <h4>Civil Engineering Materials</h4>
+                  <p>Author: Michael</p>
+                  <p>Subject: CIVIL</p>
+                  <p>Publish Year: 1990</p>
+          </div>
+          <div id="page33" class="content column CIVIL Michael 2020">
+                  <h4>Civil Engineering: Conventional</h4>
+                  <p>Author: Michael</p>
+                  <p>Subject: CIVIL</p>
+                  <p>Publish Year: 2020</p>
+          </div>
+          <div class="center">
+            <hr><br>
+          <div class="pagination" >
+
+            <a href="#">«</a>
+            
+            <a href="#" onclick='showPages("1")'>1</a>
+            
+            <a href="#" onclick='showPages("2")'>2</a>
+            
+            <a href="#" onclick='showPages("3")'>3</a>
+            
+            <a href="#">»</a>
+
+            </div>
+            </div>
+
+</div>
+</div>
+</div>
+
+  <script>
+
+$("#filter").keyup(function() {
+var filter = $(this).val(),
+  count = 0;
+$('#res div').each(function() {
+  if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+    $(this).hide();
+  } 
+  else {
+    $(this).show();
+    count++;
+  }
+});
+});
+
+function showPages(id){
+var totalNumberOfPages = 3;
+var n=0;
+for(var i=1; i<=totalNumberOfPages; i++){
+    if (document.getElementById('page'+i)) {
+        document.getElementById('page'+i).style.display='none';
+    }
+    }
+    if (id==1||id==2){
+        n=9;
+    }
+    else{
+        n=3;
+    }
+    for(var j=1; j<=totalNumberOfPages; j++){
+    for(var i=1; i<=9; i++){
+        if(j==3){
+            if(i==4){
+                break;
+            }
+        }
+    if (document.getElementById('page'+j+i)) {
+        document.getElementById('page'+j+i).style.display='none';
+    }}
+    }
+    for(var i=1; i<=n; i++){
+    if (document.getElementById('page'+id+i)) {
+        document.getElementById('page'+id+i).style.display='block';
+    }}
+}
+
+function change() {
+  var AuthorCbs = document.querySelectorAll(".Author input[type='checkbox']");
+  var PublishYearCbs = document.querySelectorAll(".PublishYear input[type='checkbox']");
+  var SubjectCbs = document.querySelectorAll(".Subject input[type='checkbox']");
+  var filters = {
+    authors: getClassOfCheckedCheckboxes(AuthorCbs),
+    publishyears: getClassOfCheckedCheckboxes(PublishYearCbs),
+    subjects: getClassOfCheckedCheckboxes(SubjectCbs)
+  };
+  filterResults(filters);
+}
+
+function getClassOfCheckedCheckboxes(checkboxes) {
+  var classes = [];
+  if (checkboxes && checkboxes.length > 0) {
+    for (var i = 0; i < checkboxes.length; i++) {
+      var cb = checkboxes[i];
+      if (cb.checked) {
+        classes.push(cb.getAttribute("rel"));
+      }
+    }
+  }
+  return classes;
+}
+
+function filterResults(filters) {
+  var rElems = document.querySelectorAll(".result div");
+  var hiddenElems = [];
+  var count1=0,f1=0;
+  var count2=0,f2=0;
+  var count3=0,f3=0;
+  if (!rElems || rElems.length <= 0) {
+    return;
+  }
+  for (var i = 0; i < rElems.length; i++) {
+    var el = rElems[i];
+
+    if (filters.authors.length > 0) {
+      var isHidden = true;
+      f1=1;
+      for (var j = 0; j < filters.authors.length; j++) {
+        var filter = filters.authors[j];
+        if (el.classList.contains(filter)) {
+          isHidden = false;
+            count1+=1;
+          break;
+        }
+      }
+      if (isHidden) {
+        hiddenElems.push(el);
+      }
+    }
+
+    if (filters.publishyears.length > 0) {
+      var isHidden = true;
+      f2=1;
+      for (var j = 0; j < filters.publishyears.length; j++) {
+        var filter = filters.publishyears[j];
+
+        if (el.classList.contains(filter)) {
+          isHidden = false;
+          count2+=1;
+          break;
+        }
+      }
+      if (isHidden) {
+        hiddenElems.push(el);
+      }
+    }
+
+    if (filters.subjects.length > 0) {
+      var isHidden = true;
+      f3=1;
+      for (var j = 0; j < filters.subjects.length; j++) {
+        var filter = filters.subjects[j];
+
+        if (el.classList.contains(filter)) {
+          isHidden = false;
+          count3+=1;
+          break;
+        }
+      }
+
+      if (isHidden) {
+        hiddenElems.push(el);
+      }
+    }
+  }
+  if(f1==1){
+  document.getElementById("result1").innerHTML="Based On Authors: "+count1;
+  }
+  if(f3==1){
+    document.getElementById("result1").innerHTML=" Based On Subjects: "+count3;
+  }
+  if(f2==1){
+    document.getElementById("result1").innerHTML=" Based On Publish Year: "+count2;
+  }
+  if(f1==1 && f2==1 || f1==1 && f3==1 || f2==1 && f3==1){
+    document.getElementById("result1").innerHTML="";
+  }
+  for (var i = 0; i < rElems.length; i++) {
+    rElems[i].style.display = "block";
+  }
+  if (hiddenElems.length <= 0) {
+    return;
+  }
+  for (var i = 0; i < hiddenElems.length; i++) {
+    hiddenElems[i].style.display = "none";
+  }
+  }
+</script>
+</body>
